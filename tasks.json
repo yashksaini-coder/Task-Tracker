@@ -2,15 +2,15 @@
     {
         "id": 1,
         "description": "Buy groceries",
-        "status": "pending",
-        "createdAt": "2024-09-01 23:08:59",
-        "updatedAt": "2024-09-01 23:08:59"
+        "status": "Pending",
+        "createdAt": "2024-09-03 01:08:54",
+        "updatedAt": "2024-09-03 01:08:54"
     },
     {
         "id": 2,
-        "description": "Water the Plants",
-        "status": "pending",
-        "createdAt": "2024-09-01 23:09:18",
-        "updatedAt": "2024-09-01 23:09:18"
+        "description": "Car Service",
+        "status": "Completed",
+        "createdAt": "2024-09-03 01:11:59",
+        "updatedAt": "2024-09-03 01:11:59"
     }
 ]
