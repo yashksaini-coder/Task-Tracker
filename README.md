@@ -4,8 +4,8 @@
 <br><br>
 
 <div align="center">
-    <img alt="GitHub Repo Name" src="https://img.shields.io/badge/Task-Tracker-color">
-    <img alt="GitHub Author" src="https://img.shields.io/badge/Author-Yash%20K.%20Saini-1D3557">
+    <img alt="GitHub Repo Name" src="https://img.shields.io/badge/Task_Tracker-7209b7">
+    <img alt="GitHub Author" src="https://img.shields.io/badge/Author-Yash%20K.%20Saini-006d77">
     <img alt="GitHub commit-activity" src="https://img.shields.io/github/commit-activity/t/yashksaini-coder/Task-Tracker">
     <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/yashksaini-coder/Task-Tracker">
     <img alt="GitHub Created At" src="https://img.shields.io/github/created-at/yashksaini-coder/Task-Tracker">
