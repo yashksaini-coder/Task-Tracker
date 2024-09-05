@@ -94,6 +94,18 @@ def mark_in_progress(task_id):
             return
     print(f'Task ID {task_id} not found.')
 
+def mark_done(task_id):
+    """Mark a task as done."""
+    tasks = load_tasks()
+    for task in tasks:
+        if task['id'] == task_id:
+            task['status'] = 'Completed'
+            task['updatedAt'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            save_tasks(tasks)
+            print("Task ID {task_id} marked as done.")
+            return
+    print("Task ID {task_id} not found.")
+
 def delete_task(task_id):
     """Delete a task by its ID."""
     tasks = load_tasks()
@@ -121,6 +133,9 @@ if __name__ == '__main__':
             
         elif command == 'mark-in-progress' and len(sys.argv) > 2:
             mark_in_progress(int(sys.argv[2]))
+        
+        elif command == 'mark-done' and len(sys.argv) > 2:
+            mark_done(int(sys.argv[2]))
             
         elif command == 'delete' and len(sys.argv) > 2:
             delete_task(int(sys.argv[2]))
