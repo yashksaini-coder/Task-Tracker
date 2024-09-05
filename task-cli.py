@@ -52,7 +52,14 @@ def list_tasks(status=None):
     table.add_column("Created At")
     table.add_column("Updated At")
     for task in tasks:
-        status_color = "green" if task['status'] == 'Completed' else "purple"
+        if task['status'] == 'Pending':
+            status_color = "green"
+        elif task['status'] == 'In-progress':
+            status_color = "purple"
+        elif task['status'] == 'Completed':
+            status_color = "red"
+        else:
+            status_color = "white"
         table.add_row(
             str(task['id']),
             task['description'],
@@ -62,6 +69,31 @@ def list_tasks(status=None):
         )
     console = Console()
     console.print(table)
+
+def update_task(task_id, new_description):
+    """Update the description of an existing task."""
+    tasks = load_tasks()
+    for task in tasks:
+        if task['id'] == task_id:
+            task['description'] = new_description
+            task['updatedAt'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            save_tasks(tasks)
+            print(f'Task ID {task_id} updated successfully.')
+            return
+    print(f'Task ID {task_id} not found.')
+
+def mark_in_progress(task_id):
+    """Mark a task as in-progress."""
+    tasks = load_tasks()
+    for task in tasks:
+        if task['id'] == task_id:
+            task['status'] = 'In-progress'
+            task['updatedAt'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            save_tasks(tasks)
+            print(f'Task ID {task_id} marked as in-progress.')
+            return
+    print(f'Task ID {task_id} not found.')
+
 
 # Main function to handle command-line arguments
 if __name__ == '__main__':
@@ -76,7 +108,12 @@ if __name__ == '__main__':
                 list_tasks(sys.argv[2])
             else:
                 list_tasks()
-        else:
-            print("Command not recognized. Available commands: add, update, delete, mark-in-progress, mark-done, list")
+        
+        elif command == 'update' and len(sys.argv) > 3:
+            update_task(int(sys.argv[2]), sys.argv[3])
+            
+        elif command == 'mark-in-progress' and len(sys.argv) > 2:
+            mark_in_progress(int(sys.argv[2]))
+            
     else:
         print("No command provided. Available commands: add, update, delete, mark-in-progress, mark-done, list")
