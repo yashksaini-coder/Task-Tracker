@@ -19,12 +19,5 @@
         "status": "In-progress",
         "createdAt": "2024-09-05 20:31:38",
         "updatedAt": "2024-09-05 20:41:05"
-    },
-    {
-        "id": 4,
-        "description": "Water Garden",
-        "status": "In-progress",
-        "createdAt": "2024-09-05 20:47:39",
-        "updatedAt": "2024-09-05 20:47:41"
     }
 ]

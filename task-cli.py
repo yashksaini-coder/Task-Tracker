@@ -94,6 +94,13 @@ def mark_in_progress(task_id):
             return
     print(f'Task ID {task_id} not found.')
 
+def delete_task(task_id):
+    """Delete a task by its ID."""
+    tasks = load_tasks()
+    tasks = [task for task in tasks if task['id'] != task_id]
+    save_tasks(tasks)
+    print(f'Task ID {task_id} deleted successfully.')
+
 
 # Main function to handle command-line arguments
 if __name__ == '__main__':
@@ -114,6 +121,9 @@ if __name__ == '__main__':
             
         elif command == 'mark-in-progress' and len(sys.argv) > 2:
             mark_in_progress(int(sys.argv[2]))
+            
+        elif command == 'delete' and len(sys.argv) > 2:
+            delete_task(int(sys.argv[2]))
             
     else:
         print("No command provided. Available commands: add, update, delete, mark-in-progress, mark-done, list")
