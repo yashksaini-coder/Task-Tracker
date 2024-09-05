@@ -33,12 +33,5 @@
         "status": "Completed",
         "createdAt": "2024-09-05 23:04:39",
         "updatedAt": "2024-09-05 23:04:58"
-    },
-    {
-        "id": 6,
-        "description": "Go to Bookstore",
-        "status": "Pending",
-        "createdAt": "2024-09-05 23:05:19",
-        "updatedAt": "2024-09-05 23:05:19"
     }
 ]

@@ -5,6 +5,8 @@ from datetime import datetime
 from rich.console import Console
 from rich.table import Table
 
+console = Console()
+
 def load_tasks():
     if not os.path.exists('tasks.json'):
         with open('tasks.json', 'w') as file:
@@ -37,7 +39,7 @@ def add_task(description):
     }
     tasks.append(new_task)
     save_tasks(tasks)
-    print(f'Task added successfully (ID: {task_id})')
+    console.print(f"[green]Task added successfully (ID: {task_id})[/green]")
 
 
 def list_tasks(status=None):
@@ -45,6 +47,10 @@ def list_tasks(status=None):
     tasks = load_tasks()
     if status:
         tasks = [task for task in tasks if task['status'] == status.lower().capitalize()]
+    if not tasks:
+        console.print("[red]No tasks found.[/red]")
+        return
+    
     table = Table(show_header=True, header_style="bold magenta")
     table.add_column("ID")
     table.add_column("Description")
@@ -67,8 +73,9 @@ def list_tasks(status=None):
             task['createdAt'],
             task['updatedAt']
         )
-    console = Console()
+        
     console.print(table)
+
 
 def update_task(task_id, new_description):
     """Update the description of an existing task."""
@@ -78,9 +85,9 @@ def update_task(task_id, new_description):
             task['description'] = new_description
             task['updatedAt'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             save_tasks(tasks)
-            print(f'Task ID {task_id} updated successfully.')
+            console.print(f"[green]Task ID {task_id} updated successfully.[/green]")
             return
-    print(f'Task ID {task_id} not found.')
+    console.print(f"[red]Task ID {task_id} not found.[/red]")
 
 def mark_in_progress(task_id):
     """Mark a task as in-progress."""
@@ -90,9 +97,9 @@ def mark_in_progress(task_id):
             task['status'] = 'In-progress'
             task['updatedAt'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             save_tasks(tasks)
-            print(f'Task ID {task_id} marked as in-progress.')
+            console.print(f"[cyan]Task ID {task_id} marked as in-progress.[/cyan]")
             return
-    print(f'Task ID {task_id} not found.')
+    console.print(f"[red]Task ID {task_id} not found.[/red]")
 
 def mark_done(task_id):
     """Mark a task as done."""
@@ -102,16 +109,16 @@ def mark_done(task_id):
             task['status'] = 'Completed'
             task['updatedAt'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             save_tasks(tasks)
-            print("Task ID {task_id} marked as done.")
+            console.print(f"[blue]Task ID {task_id} marked as done.[/blue]")
             return
-    print("Task ID {task_id} not found.")
+    console.print(f"[red]Task ID {task_id} not found.[/red]")
 
 def delete_task(task_id):
     """Delete a task by its ID."""
     tasks = load_tasks()
     tasks = [task for task in tasks if task['id'] != task_id]
     save_tasks(tasks)
-    print(f'Task ID {task_id} deleted successfully.')
+    console.print(f"[yellow]Task ID {task_id} deleted successfully.[/yellow]")
 
 
 # Main function to handle command-line arguments
@@ -129,16 +136,32 @@ if __name__ == '__main__':
                 list_tasks()
         
         elif command == 'update' and len(sys.argv) > 3:
-            update_task(int(sys.argv[2]), sys.argv[3])
+            try:
+                task_id = int(sys.argv[2])
+                new_description = sys.argv[3]
+                update_task(task_id, new_description)
+            except ValueError:
+                console.print("[red]Invalid task ID. It should be an integer.[/red]")
             
         elif command == 'mark-in-progress' and len(sys.argv) > 2:
-            mark_in_progress(int(sys.argv[2]))
+            try:
+                task_id = int(sys.argv[2])
+                mark_in_progress(task_id)
+            except ValueError:
+                console.print("[red]Invalid task ID. It should be an integer.[/red]")
         
         elif command == 'mark-done' and len(sys.argv) > 2:
-            mark_done(int(sys.argv[2]))
+            try:
+                task_id = int(sys.argv[2])
+                mark_done(task_id)
+            except ValueError:
+                console.print("[red]Invalid task ID. It should be an integer.[/red]")
             
         elif command == 'delete' and len(sys.argv) > 2:
-            delete_task(int(sys.argv[2]))
-            
+            try:
+                task_id = int(sys.argv[2])
+                delete_task(task_id)
+            except ValueError:
+                console.print("[red]Invalid task ID. It should be an integer.[/red]")
     else:
-        print("No command provided. Available commands: add, update, delete, mark-in-progress, mark-done, list")
+        console.print("[red]No command provided.[/red] Available commands: [bold]add, update, delete, mark-in-progress, mark-done, list[/bold]")
