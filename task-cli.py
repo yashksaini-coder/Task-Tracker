@@ -44,7 +44,7 @@ def list_tasks(status=None):
     """List tasks filtered by status, or list all tasks if no status is provided."""
     tasks = load_tasks()
     if status:
-        tasks = [task for task in tasks if task['status'] == status]
+        tasks = [task for task in tasks if task['status'] == status.lower().capitalize()]
     table = Table(show_header=True, header_style="bold magenta")
     table.add_column("ID")
     table.add_column("Description")
