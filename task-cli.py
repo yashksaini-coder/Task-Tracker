@@ -116,9 +116,17 @@ def mark_done(task_id):
 def delete_task(task_id):
     """Delete a task by its ID."""
     tasks = load_tasks()
-    tasks = [task for task in tasks if task['id'] != task_id]
-    save_tasks(tasks)
-    console.print(f"[yellow]Task ID {task_id} deleted successfully.[/yellow]")
+    task_exists = False
+    for task in tasks:
+        if task['id'] == task_id:
+            tasks.remove(task)
+            task_exists = True
+            break
+    if task_exists:
+        save_tasks(tasks)
+        console.print(f"[yellow]Task ID {task_id} deleted successfully.[/yellow]")
+    else:
+        console.print(f"[red]Task ID {task_id} does not exist.[/red]")
 
 
 # Main function to handle command-line arguments
