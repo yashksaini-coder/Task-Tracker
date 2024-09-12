@@ -9,23 +9,19 @@ from rich.prompt import Prompt
 console = Console()
 
 TASK_TRACKER_ASCII = """
-┌───────────────────────────────────────────────────────────┐
-│                                                           │
-│ ████████╗ █████╗ ███████╗██╗  ██╗                         │
-│ ╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝                         │
-│    ██║   ███████║███████╗█████╔╝                          │
-│    ██║   ██╔══██║╚════██║██╔═██╗                          │
-│    ██║   ██║  ██║███████║██║  ██╗                         │
-│    ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝                         │
-│                                                           │
-│ ████████╗██████╗  █████╗  ██████╗██╗  ██╗███████╗██████╗  │
-│ ╚══██╔══╝██╔══██╗██╔══██╗██╔════╝██║ ██╔╝██╔════╝██╔══██╗ │
-│    ██║   ██████╔╝███████║██║     █████╔╝ █████╗  ██████╔╝ │
-│    ██║   ██╔══██╗██╔══██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗ │
-│    ██║   ██║  ██║██║  ██║╚██████╗██║  ██╗███████╗██║  ██║ │
-│    ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ │
-│                                                           │
-└───────────────────────────────────────────────────────────┘"""
+╔╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╗
+╟┼┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┼╢
+╟┤                                                                                                ├╢
+╟┤ ████████╗ █████╗ ███████╗██╗  ██╗    ████████╗██████╗  █████╗  ██████╗██╗  ██╗███████╗██████╗  ├╢
+╟┤ ╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝    ╚══██╔══╝██╔══██╗██╔══██╗██╔════╝██║ ██╔╝██╔════╝██╔══██╗ ├╢
+╟┤    ██║   ███████║███████╗█████╔╝        ██║   ██████╔╝███████║██║     █████╔╝ █████╗  ██████╔╝ ├╢
+╟┤    ██║   ██╔══██║╚════██║██╔═██╗        ██║   ██╔══██╗██╔══██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗ ├╢
+╟┤    ██║   ██║  ██║███████║██║  ██╗       ██║   ██║  ██║██║  ██║╚██████╗██║  ██╗███████╗██║  ██║ ├╢
+╟┤    ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝       ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ├╢
+╟┤                                                                                                ├╢
+╟┼┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┼╢
+╚╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╧╝
+"""
 
 def load_tasks():
     if not os.path.exists('tasks.json'):
@@ -150,27 +146,27 @@ def main():
     parser = argparse.ArgumentParser(description="Task Tracker CLI")
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
 
-    # Add task
-    add_parser = subparsers.add_parser("add", help="Add a new task")
-    add_parser.add_argument("description", help="Task description")
+    # Add command
+    parser_add = subparsers.add_parser("add", help="Add a new task")
+    parser_add.add_argument("description", type=str, help="Description of the task")
 
-    # List tasks
-    list_parser = subparsers.add_parser("list", help="List tasks")
-    list_parser.add_argument("--status", choices=["pending", "in-progress", "completed"], help="Filter by status")
+    # List command
+    parser_list = subparsers.add_parser("list", help="List all tasks")
+    parser_list.add_argument("status", type=str, help="Status of the tasks to list")
 
-    # Update task
-    update_parser = subparsers.add_parser("update", help="Update a task")
-    update_parser.add_argument("id", type=int, help="Task ID")
-    update_parser.add_argument("description", help="New task description")
+    # Update command
+    parser_update = subparsers.add_parser("update", help="Update an existing task")
+    parser_update.add_argument("id", type=int, help="ID of the task to update")
+    parser_update.add_argument("description", type=str, help="New description of the task")
 
-    # Mark task status
-    mark_parser = subparsers.add_parser("mark", help="Mark task status")
-    mark_parser.add_argument("id", type=int, help="Task ID")
-    mark_parser.add_argument("status", choices=["in-progress", "completed"], help="New status")
+    # Mark command
+    parser_mark = subparsers.add_parser("mark", help="Mark a task as completed or pending")
+    parser_mark.add_argument("id", type=int, help="ID of the task to mark")
+    parser_mark.add_argument("status", type=str, choices=["completed", "pending"], help="New status of the task")
 
-    # Delete task
-    delete_parser = subparsers.add_parser("delete", help="Delete a task")
-    delete_parser.add_argument("id", type=int, help="Task ID")
+    # Delete command
+    parser_delete = subparsers.add_parser("delete", help="Delete a task")
+    parser_delete.add_argument("id", type=int, help="ID of the task to delete")
 
     args = parser.parse_args()
 
