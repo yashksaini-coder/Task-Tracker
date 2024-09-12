@@ -1,6 +1,5 @@
 import json
 import os
-import sys
 from datetime import datetime
 from rich.console import Console
 from rich.table import Table
@@ -10,11 +9,23 @@ from rich.prompt import Prompt
 console = Console()
 
 TASK_TRACKER_ASCII = """
- _____         _     _____               _             
-|_   _|_ _ ___| | __| __  |___ ___ ___ _| |___ ___ 
-  | | | | |_ -| |/ /|    -| .'| .'|  _| . | -_|  _|
-  |_| |___|___|_|_/ |__|__|__,|__,|_| |___|___|_|  
-"""
+┌───────────────────────────────────────────────────────────┐
+│                                                           │
+│ ████████╗ █████╗ ███████╗██╗  ██╗                         │
+│ ╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝                         │
+│    ██║   ███████║███████╗█████╔╝                          │
+│    ██║   ██╔══██║╚════██║██╔═██╗                          │
+│    ██║   ██║  ██║███████║██║  ██╗                         │
+│    ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝                         │
+│                                                           │
+│ ████████╗██████╗  █████╗  ██████╗██╗  ██╗███████╗██████╗  │
+│ ╚══██╔══╝██╔══██╗██╔══██╗██╔════╝██║ ██╔╝██╔════╝██╔══██╗ │
+│    ██║   ██████╔╝███████║██║     █████╔╝ █████╗  ██████╔╝ │
+│    ██║   ██╔══██╗██╔══██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗ │
+│    ██║   ██║  ██║██║  ██║╚██████╗██║  ██╗███████╗██║  ██║ │
+│    ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ │
+│                                                           │
+└───────────────────────────────────────────────────────────┘"""
 
 def load_tasks():
     if not os.path.exists('tasks.json'):
@@ -163,8 +174,8 @@ def main():
 
     args = parser.parse_args()
 
-    console.print(TASK_TRACKER_ASCII, style="bold blue")
-    console.print("Welcome to the Task Tracker CLI!", style="bold green")
+    console.print(TASK_TRACKER_ASCII, style="bold violet")
+    console.print("Welcome to the Task Tracker CLI!", style="green")
 
     if args.command == "add":
         add_task(args.description)
