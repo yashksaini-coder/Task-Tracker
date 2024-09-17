@@ -155,22 +155,22 @@ Make sure you have Python installed on your system. You can download it from [py
 
 - **Add a Task**: 
     ```sh
-    add "Task Description"
+    task-tracker add "Task Description"
     ```
 
 - **View All Tasks**: 
     ```sh
-    view
+    task-tracker list [status]
     ```
 
 - **Update a Task**: 
     ```sh
-    update <task_id> "New Task Description"
+    task-tracker update <task_id> "New Task Description"
     ```
 
 - **Delete a Task**: 
     ```sh
-    delete <task_id>
+    task-tracker delete <task_id>
     ```
 
 ### License
