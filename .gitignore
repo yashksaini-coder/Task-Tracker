@@ -131,6 +131,9 @@ env.bak/
 venv.bak/
 .vscode
 
+# Extra Files
+tasks.json
+
 # Spyder project settings
 .spyderproject
 .spyproject
