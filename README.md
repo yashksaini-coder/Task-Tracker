@@ -35,3 +35,75 @@
 </div>
 
 ---
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have Python installed on your system. You can download it from [python.org](https://www.python.org/).
+
+### Installation
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/yashksaini-coder/Task-Tracker.git
+    cd Task-Tracker
+    ```
+
+2. Create a virtual environment:
+    ```sh
+    python -m venv venv
+    ```
+
+3. Activate the virtual environment:
+    - On Windows:
+        ```sh
+        venv\Scripts\activate
+        ```
+    - On macOS/Linux:
+        ```sh
+        source venv/bin/activate
+        ```
+
+4. Install the required dependencies:
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+### Usage
+
+1. Run the Task Tracker CLI:
+    ```sh
+    pip install -e .
+    task-tracker    
+    ```
+
+2. Follow the on-screen instructions to add, view, update, or delete tasks.
+
+### Basic Commands
+
+- **Add a Task**: 
+    ```sh
+    add "Task Description"
+    ```
+
+- **View All Tasks**: 
+    ```sh
+    view
+    ```
+
+- **Update a Task**: 
+    ```sh
+    update <task_id> "New Task Description"
+    ```
+
+- **Delete a Task**: 
+    ```sh
+    delete <task_id>
+    ```
+
+### License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
