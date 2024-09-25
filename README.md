@@ -67,24 +67,24 @@ Here are some example commands and their usage:
 
 ```bash
 # Adding a new task
-task-cli add "Buy groceries"
+taskr add "Buy groceries"
 # Output: Task added successfully (ID: 1)
 
 # Updating and deleting tasks
-task-cli update 1 "Buy groceries and cook dinner"
-task-cli delete 1
+taskr update 1 "Buy groceries and cook dinner"
+taskr delete 1
 
 # Marking a task as in-progress or done
-task-cli mark-in-progress 1
-task-cli mark-done 1
+taskr mark-in-progress 1
+taskr mark-done 1
 
 # Listing all tasks
-task-cli list
+taskr list
 
 # Listing tasks by status
-task-cli list done
-task-cli list todo
-task-cli list in-progress
+taskr list done
+taskr list todo
+taskr list in-progress
 ```
 
 ## Task Properties
@@ -155,22 +155,22 @@ Make sure you have Python installed on your system. You can download it from [py
 
 - **Add a Task**: 
     ```sh
-    task-tracker add "Task Description"
+    taskr add "Task Description"
     ```
 
 - **View All Tasks**: 
     ```sh
-    task-tracker list [status]
+    taskr list [status]
     ```
 
 - **Update a Task**: 
     ```sh
-    task-tracker update <task_id> "New Task Description"
+    taskr update <task_id> "New Task Description"
     ```
 
 - **Delete a Task**: 
     ```sh
-    task-tracker delete <task_id>
+    taskr delete <task_id>
     ```
 
 ### License
