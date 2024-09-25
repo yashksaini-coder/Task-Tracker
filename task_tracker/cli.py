@@ -172,7 +172,16 @@ def main():
     args = parser.parse_args()
 
     console.print(TASK_TRACKER_ASCII, style="bold violet")
-    console.print("Welcome to the Task Tracker CLI!", style="green")
+    console.print("Welcome to the Task Tracker v1.0", style="green")
+    console.print(
+        """
+        - A CLI-based Task tracker tool that can easily track your small todo tasks.
+        - Store them in JSON format.
+        - Keep a log of them.
+        - Categorize them by using specific labels.
+        """,
+        style="green"
+    )
 
     if args.command == "add":
         add_task(args.description)
