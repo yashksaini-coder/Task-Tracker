@@ -153,7 +153,7 @@ def main():
 
     # List command
     parser_list = subparsers.add_parser("list", help="List all tasks")
-    parser_list.add_argument("status", type=str, help="Status of the tasks to list")
+    parser_list.add_argument("status", type=str, nargs='?', default=None, help="Status of the tasks to list (optional)")
 
     # Update command
     parser_update = subparsers.add_parser("update", help="Update an existing task")
