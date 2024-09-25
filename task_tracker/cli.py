@@ -72,7 +72,7 @@ def list_tasks(status=None):
         return
     
     table = Table(show_header=True, header_style="bold magenta")
-    table.add_column("ID")
+    table.add_column("#")
     table.add_column("Description")
     table.add_column("Status")
     table.add_column("Created At")
