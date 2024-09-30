@@ -10,7 +10,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'task-tracker=task_tracker.cli:main',
+            'taskr=task_tracker.cli:main',
         ],
     },
 )
